@@ -10,6 +10,12 @@ import Cocoa
 
 class ViewController: NSViewController {
 
+    @IBOutlet weak var MandelbrotImageView: CustomImageView!
+    @IBOutlet weak var StartButton: NSButton!
+    @IBOutlet weak var ImageCountLabel: NSTextField!
+
+    var imageCounter: Int = 0
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -22,6 +28,14 @@ class ViewController: NSViewController {
         }
     }
 
+    @IBAction func StartButtonClick(_ sender: Any) {
 
+        let downloadURL = FileManager.default.urls(for: .downloadsDirectory, in: .userDomainMask).first!
+        imageCounter += 1
+        let fileName = String(format: "new-mandelbrot-%04d.png", imageCounter)
+        let destinationURL = downloadURL.appendingPathComponent(fileName)
+        let saveResult = MandelbrotImageView.image!.pngWrite(to: destinationURL)
+    }
+    
 }
 
