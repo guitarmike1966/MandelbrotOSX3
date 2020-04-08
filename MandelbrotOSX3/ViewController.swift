@@ -8,6 +8,9 @@
 
 import Cocoa
 
+let WIDTH = 1024
+let HEIGHT = 768
+
 class ViewController: NSViewController {
 
     @IBOutlet weak var MandelbrotImageView: CustomImageView!
@@ -30,11 +33,31 @@ class ViewController: NSViewController {
 
     @IBAction func StartButtonClick(_ sender: Any) {
 
-        let downloadURL = FileManager.default.urls(for: .downloadsDirectory, in: .userDomainMask).first!
-        imageCounter += 1
-        let fileName = String(format: "new-mandelbrot-%04d.png", imageCounter)
-        let destinationURL = downloadURL.appendingPathComponent(fileName)
-        let saveResult = MandelbrotImageView.image!.pngWrite(to: destinationURL)
+        for x in 0..<1500 {
+            self.MandelbrotImageView.createImage()
+
+            let downloadURL = FileManager.default.urls(for: .downloadsDirectory, in: .userDomainMask).first!
+            self.imageCounter += 1
+            let fileName = String(format: "new-mandelbrot-%04d.png", self.imageCounter)
+            let destinationURL = downloadURL.appendingPathComponent(fileName)
+            let saveResult = self.MandelbrotImageView.image!.pngWrite(to: destinationURL)
+
+            let xWidth = self.MandelbrotImageView.xb - self.MandelbrotImageView.xa
+            let xHeight = self.MandelbrotImageView.yb - self.MandelbrotImageView.ya
+
+            let xShrink = xWidth * 0.00012
+            let yShrink = xHeight * 0.00012
+
+            self.MandelbrotImageView.xa += (xShrink * 0.5)
+            self.MandelbrotImageView.xb -= (xShrink * 9.5)
+            self.MandelbrotImageView.ya += (yShrink * 5)
+            self.MandelbrotImageView.yb -= (yShrink * 5)
+                
+            DispatchQueue.main.async {
+                self.ImageCountLabel.stringValue = String(format: "%04d", self.imageCounter)
+            }
+
+        }
     }
     
 }

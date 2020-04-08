@@ -14,6 +14,7 @@
 		D9AEFCC3243D752C0044DE73 /* MandelbrotOSX3Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9AEFCC2243D752C0044DE73 /* MandelbrotOSX3Tests.swift */; };
 		D9AEFCCE243D752C0044DE73 /* MandelbrotOSX3UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9AEFCCD243D752C0044DE73 /* MandelbrotOSX3UITests.swift */; };
 		D9AEFCDC243D778B0044DE73 /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9AEFCDB243D778B0044DE73 /* CustomImageView.swift */; };
+		D9C71E95243E8A4C001A9DA7 /* CustomImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C71E94243E8A4C001A9DA7 /* CustomImage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,7 @@
 		D9AEFCCD243D752C0044DE73 /* MandelbrotOSX3UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MandelbrotOSX3UITests.swift; sourceTree = "<group>"; };
 		D9AEFCCF243D752C0044DE73 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D9AEFCDB243D778B0044DE73 /* CustomImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
+		D9C71E94243E8A4C001A9DA7 /* CustomImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 				D9AEFCAF243D752B0044DE73 /* AppDelegate.swift */,
 				D9AEFCB1243D752B0044DE73 /* ViewController.swift */,
 				D9AEFCDB243D778B0044DE73 /* CustomImageView.swift */,
+				D9C71E94243E8A4C001A9DA7 /* CustomImage.swift */,
 				D9AEFCB3243D752C0044DE73 /* Assets.xcassets */,
 				D9AEFCB5243D752C0044DE73 /* Main.storyboard */,
 				D9AEFCB8243D752C0044DE73 /* Info.plist */,
@@ -195,6 +198,11 @@
 				TargetAttributes = {
 					D9AEFCAB243D752B0044DE73 = {
 						CreatedOnToolsVersion = 10.2.1;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 1;
+							};
+						};
 					};
 					D9AEFCBD243D752C0044DE73 = {
 						CreatedOnToolsVersion = 10.2.1;
@@ -259,6 +267,7 @@
 			files = (
 				D9AEFCB2243D752B0044DE73 /* ViewController.swift in Sources */,
 				D9AEFCDC243D778B0044DE73 /* CustomImageView.swift in Sources */,
+				D9C71E95243E8A4C001A9DA7 /* CustomImage.swift in Sources */,
 				D9AEFCB0243D752B0044DE73 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
