@@ -8,13 +8,13 @@
 
 import Cocoa
 
-let WIDTH = 800
-let HEIGHT = 600
+let WIDTH = 1024
+let HEIGHT = 768
 
 // let startWidth = 1.0 - -2.0
 // let startHeight = 1.25 - -1.25
 
-let Rate = 0.0012
+let Rate = 0.0015
 
 let startXA = -2.0
 let startXB = 1.0
@@ -34,7 +34,9 @@ class ViewController: NSViewController {
     @IBOutlet weak var MandelbrotImageView: CustomImageView!
     @IBOutlet weak var StartButton: NSButton!
     @IBOutlet weak var ImageCountLabel: NSTextField!
-
+    @IBOutlet weak var StartNumberText: NSTextField!
+    @IBOutlet weak var EndNumberText: NSTextField!
+    
     var imageCounter: Int = 0
 
     override func viewDidLoad() {
@@ -51,7 +53,12 @@ class ViewController: NSViewController {
 
     @IBAction func StartButtonClick(_ sender: Any) {
 
-        for x in 6..<12 {
+        // first - validate the numbers
+        let startNumber: Int = Int(StartNumberText.stringValue)!
+        let endNumber: Int = Int(EndNumberText.stringValue)!
+
+        // second - build images
+        for x in startNumber..<endNumber {
 
             (xxa,xxb) = calc(a: startXA, b: startXB, iter: x, rate: Rate, portionA: 0.05, portionB: 0.95)
             (xya,xyb) = calc(a: startYA, b: startYB, iter: x, rate: Rate, portionA: 0.5, portionB: 0.5)
@@ -65,7 +72,7 @@ class ViewController: NSViewController {
 
             let downloadURL = FileManager.default.urls(for: .downloadsDirectory, in: .userDomainMask).first!
 
-            self.imageCounter += 1
+            self.imageCounter = x
             let fileName = String(format: "new-mandelbrot-%04d.png", self.imageCounter)
             let destinationURL = downloadURL.appendingPathComponent(fileName)
             let saveResult = self.MandelbrotImageView.image!.pngWrite(to: destinationURL)
