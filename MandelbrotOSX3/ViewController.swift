@@ -14,7 +14,7 @@ let HEIGHT = 768
 // let startWidth = 1.0 - -2.0
 // let startHeight = 1.25 - -1.25
 
-let Rate = 0.0015
+let Rate = 0.0014
 
 let startXA = -2.0
 let startXB = 1.0
@@ -60,8 +60,8 @@ class ViewController: NSViewController {
         // second - build images
         for x in startNumber..<endNumber {
 
-            (xxa,xxb) = calc(a: startXA, b: startXB, iter: x, rate: Rate, portionA: 0.05, portionB: 0.95)
-            (xya,xyb) = calc(a: startYA, b: startYB, iter: x, rate: Rate, portionA: 0.5, portionB: 0.5)
+            (xxa,xxb) = calc(a: startXA, b: startXB, iter: x, rate: Rate, portionA: 0.06, portionB: 0.94)
+            (xya,xyb) = calc(a: startYA, b: startYB, iter: x, rate: Rate, portionA: 0.48, portionB: 0.52)
 
             self.MandelbrotImageView.xa = xxa
             self.MandelbrotImageView.xb = xxb
