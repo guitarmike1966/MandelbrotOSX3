@@ -46,19 +46,41 @@ class CustomImageView: NSImageView {
 
     func createImage()
     {
-        let colorSpace = CGColorSpaceCreateDeviceRGB()
-        let bitmapInfo = CGImageAlphaInfo.premultipliedFirst.rawValue
-        let context = CGContext(data: nil, width: WIDTH, height: HEIGHT, bitsPerComponent: 8, bytesPerRow: 0, space: colorSpace, bitmapInfo: bitmapInfo)
+        // let colorSpace = CGColorSpaceCreateDeviceRGB()
+        // let bitmapInfo = CGImageAlphaInfo.premultipliedFirst.rawValue
 
-        for x in 0..<context!.width {
-            for y in 0..<context!.height {
+        // var context: CGContext
+
+        // let context = CGContext(data: nil, width: WIDTH, height: HEIGHT, bitsPerComponent: 8, bytesPerRow: 0, space: colorSpace, bitmapInfo: bitmapInfo)
+
+        let context = getContext()
+
+        for x in 0..<context.width {
+            for y in 0..<context.height {
                 let color = Mandelbrot(Px: x, Py: y)
-                setPixel(context: context!, x: x, y: y, color: color)
+                setPixel(context: context, x: x, y: y, color: color)
             }
         }
 
-        let xImage = context?.makeImage()
+        let xImage = context.makeImage()
         self.image = NSImage(cgImage: xImage!, size: NSSize(width: xImage!.width, height: xImage!.height))
+    }
+
+
+    private func getContext() -> CGContext {
+        let colorSpace = CGColorSpaceCreateDeviceRGB()
+        let bitmapInfo = CGImageAlphaInfo.premultipliedFirst.rawValue
+
+        var context = NSGraphicsContext.current?.cgContext
+
+        if context == nil {
+            print("Creating new context")
+            context = CGContext(data: nil, width: WIDTH, height: HEIGHT, bitsPerComponent: 8, bytesPerRow: 0, space: colorSpace, bitmapInfo: bitmapInfo)
+        } else {
+            print("Using existing context")
+        }
+
+        return context!
     }
 
 
