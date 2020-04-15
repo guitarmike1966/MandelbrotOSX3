@@ -14,7 +14,7 @@ let HEIGHT = 768
 // let startWidth = 1.0 - -2.0
 // let startHeight = 1.25 - -1.25
 
-let Rate = 0.0022
+let Rate = 0.0030
 
 let startXA = -2.5
 let startXB = 1.5
