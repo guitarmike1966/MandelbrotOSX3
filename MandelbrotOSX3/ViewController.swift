@@ -8,18 +8,18 @@
 
 import Cocoa
 
-let WIDTH = 1024
-let HEIGHT = 768
+let WIDTH = 1280
+let HEIGHT = 720
 
 // let startWidth = 1.0 - -2.0
 // let startHeight = 1.25 - -1.25
 
-let Rate = 0.0030
+let Rate = 0.0040
 
-let startXA = -2.5
-let startXB = 1.5
-let startYA = -1.5
-let startYB = 1.5
+let startXA = -3.0
+let startXB = 2.0
+let startYA = -1.40625
+let startYB = 1.40625
 
 
 class ViewController: NSViewController {
@@ -60,8 +60,8 @@ class ViewController: NSViewController {
         // second - build images
         for x in startNumber..<endNumber {
 
-            (xxa,xxb) = calc(a: startXA, b: startXB, iter: x, rate: Rate, portionA: 0.3118, portionB: 0.6882)
-            (xya,xyb) = calc(a: startYA, b: startYB, iter: x, rate: Rate, portionA: 0.609, portionB: 0.391)
+            (xxa,xxb) = calc(a: startXA, b: startXB, iter: x, rate: Rate, portionA: 0.31185, portionB: 0.68815)
+            (xya,xyb) = calc(a: startYA, b: startYB, iter: x, rate: Rate, portionA: 0.6089, portionB: 0.3911)
 
             self.MandelbrotImageView.xa = xxa
             self.MandelbrotImageView.xb = xxb
@@ -83,8 +83,8 @@ class ViewController: NSViewController {
 
         }
     }
-    
-    
+
+
     private func calc(a: Double, b: Double, iter: Int, rate: Double, portionA: Double, portionB: Double) -> (Double,Double) {
         var aReturn: Double
         var bReturn: Double
